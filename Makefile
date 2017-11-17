@@ -16,8 +16,5 @@ my_executor: my_executor.cpp
 	$(CXXLINK) $<  $(LDFLAGS)  -lcurl
 
 
-check: crawl
-	./crawl http://mesosphere.io/team/
-
 clean:
 	(rm -f core my-framework my-executor)
