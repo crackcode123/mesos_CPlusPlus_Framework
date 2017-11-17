@@ -183,12 +183,11 @@ public:
       vector<TaskInfo> tasks_to_launch;
       
 
-      while (tasksLaunched < totalTasks &&
-             remaining.toUnreserved().contains(taskResources)) 
+      //while (tasksLaunched < totalTasks &&
+     //        remaining.toUnreserved().contains(taskResources)) 
       {
-        tasksLaunched++;
 
-        for (int i=0; i< totalTasks; ++i)
+        for (int i=0; i< totalTasks && (tasksLaunched < totalTasks) && (remaining.toUnreserved().contains(taskResources)); ++i)
         {
 
 
@@ -198,6 +197,7 @@ public:
           {
           //task.set_name("Task " + lexical_cast<string>());
           //task.mutable_task_id()->set_value(lexical_cast<string>(taskId));
+            tasksLaunched++;
             job->gettaskiinfo()->mutable_slave_id()->MergeFrom(offer.slave_id());
             job->gettaskiinfo()->mutable_executor()->MergeFrom(executor);
 
